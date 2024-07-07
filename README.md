@@ -58,3 +58,10 @@ This project allows users to create and manage expression trees interactively. T
     - Evaluate the result of the expression trees
 
 ### Menu Options:
+1. Insert record
+2. Remove record
+3. Update record
+4. Search record
+5. Display records
+6. Build and evaluate expression tree
+7. Exit
