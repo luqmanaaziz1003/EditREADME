@@ -8,10 +8,6 @@ This project implements an expression tree management system in C. It allows use
 2. [Features](#features)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [License](#license)
-7. [Authors and Acknowledgments](#authors-and-acknowledgments)
-8. [References](#references)
 
 ## Description
 
