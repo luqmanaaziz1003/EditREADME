@@ -180,7 +180,58 @@ Node* buildExpressionTreeInteractive() {
     return NULL;
 }
 ```
-2. **Follow the interactive prompts to manage expression trees:**
+2. **Main Program**
+```c 
+int main() {
+    RecordList list;
+    initList(&list);
+
+    int choice;
+    do {
+        printBoldTitle("Expression Tree");
+        printf("\nMenu:\n");
+        printf("1. Insert record\n");
+        printf("2. Remove record\n");
+        printf("3. Update record\n");
+        printf("4. Search record\n");
+        printf("5. Display records\n");
+        printf("6. Build and evaluate expression tree\n");
+        printf("7. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                handleInsertRecord(&list);
+                break;
+            case 2:
+                handleRemoveRecord(&list);
+                break;
+            case 3:
+                handleUpdateRecord(&list);
+                break;
+            case 4:
+                handleSearchRecord(&list);
+                break;
+            case 5:
+                displayRecords(&list);
+                break;
+            case 6:
+                handleBuildAndEvaluateExpressionTree(&list);
+                break;
+            case 7:
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 7);
+
+    freeRecords(&list);
+    return 0;
+}
+
+```
+3. **Follow the interactive prompts to manage expression trees:**
     - Insert new expression trees
     - Display all expression trees
     - Search, update, and remove nodes
@@ -194,7 +245,3 @@ Node* buildExpressionTreeInteractive() {
 5. Display records
 6. Build and evaluate expression tree
 7. Exit
-
-```c
-
-```
