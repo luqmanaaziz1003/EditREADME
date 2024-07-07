@@ -6,8 +6,7 @@ This project implements an expression tree management system in C. It allows use
 
 1. [Description](#description)
 2. [Features](#features)
-3. [Installation](#installation)
-4. [Usage](#usage)
+3. [Usage](#usage)
 
 ## Description
 
@@ -26,44 +25,11 @@ This project allows users to create and manage expression trees interactively. T
 - **Search and Update**: Find specific nodes and update their values.
 - **Evaluation**: Calculate the result of the expression trees.
 
-## Installation
-
-1. **Clone the repository:**
-    ```sh
-    gh repo clone github/markup
-    ```
-2. **Navigate to the project directory:**
-    ```sh
-    cd expression-tree-management
-    ```
-3. **Compile the code:**
-    ```sh
-    gcc -o expr_tree main.c
-    ```
-
 ## Usage
 
-1. **Run the compiled program:**
-    ```sh
-    ./expr_tree
-    ```
-2. **Follow the interactive prompts to manage expression trees:**
-    - Insert new expression trees
-    - Display all expression trees
-    - Search, update, and remove nodes
-    - Evaluate the result of the expression trees
-
-### Menu Options:
-1. Insert record
-2. Remove record
-3. Update record
-4. Search record
-5. Display records
-6. Build and evaluate expression tree
-7. Exit
-
+1. **Our Program:**
 ```c
-void initList(RecordList* list) {
+    void initList(RecordList* list) {
     list->head = NULL;
 }
 
@@ -213,4 +179,22 @@ Node* buildExpressionTreeInteractive() {
 
     return NULL;
 }
+```
+2. **Follow the interactive prompts to manage expression trees:**
+    - Insert new expression trees
+    - Display all expression trees
+    - Search, update, and remove nodes
+    - Evaluate the result of the expression trees
+
+### Menu Options:
+1. Insert record
+2. Remove record
+3. Update record
+4. Search record
+5. Display records
+6. Build and evaluate expression tree
+7. Exit
+
+```c
+
 ```
