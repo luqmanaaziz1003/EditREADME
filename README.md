@@ -245,3 +245,5 @@ int main() {
 5. Display records
 6. Build and evaluate expression tree
 7. Exit
+```
+![Image showing the output of the program](/Screenshots)
