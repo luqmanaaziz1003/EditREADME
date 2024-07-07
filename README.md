@@ -29,7 +29,48 @@ This project allows users to create and manage expression trees interactively. T
 
 1. **Our Program:**
 ```c
-    void initList(RecordList* list) {
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct Node {
+    char value[12];
+    struct Node* left;
+    struct Node* right;
+} Node;
+
+typedef struct Record {
+    Node* treeNode;
+    struct Record* next;
+} Record;
+
+typedef struct {
+    Record* head;
+} RecordList;
+
+void initList(RecordList* list);
+Node* createTreeNode(const char* value);
+Record* createRecord(Node* treeNode);
+void insertRecord(RecordList* list, Node* treeNode);
+void displayRecords(RecordList* list);
+Record* searchRecord(RecordList* list, const char* value);
+void removeRecord(RecordList* list, const char* value);
+void updateRecord(Node* root, const char* oldValue, const char* newValue);
+void freeRecords(RecordList* list);
+void printBoldTitle(const char* title);
+Node* buildExpressionTreeInteractive();
+double evaluate(Node* root);
+void freeTree(Node* root);
+void handleInsertRecord(RecordList* list);
+void handleRemoveRecord(RecordList* list);
+void handleUpdateRecord(RecordList* list);
+void handleSearchRecord(RecordList* list);
+void handleBuildAndEvaluateExpressionTree(RecordList* list);
+void displayTree(Node* root);
+void removeNode(Node** root, const char* value);
+int searchTree(Node* root, const char* value);
+
+void initList(RecordList* list) {
     list->head = NULL;
 }
 
@@ -179,9 +220,79 @@ Node* buildExpressionTreeInteractive() {
 
     return NULL;
 }
-```
-2. **Main Program**
-```c 
+
+double evaluate(Node* root) {
+    if (root->left == NULL && root->right == NULL) {
+        return atof(root->value);
+    }
+    double leftVal = evaluate(root->left);
+    double rightVal = evaluate(root->right);
+    switch (root->value[0]) {
+        case '+': return leftVal + rightVal;
+        case '-': return leftVal - rightVal;
+        case '*': return leftVal * rightVal;
+        case '/': return leftVal / rightVal;
+        default: return 0;
+    }
+}
+
+void freeTree(Node* root) {
+    if (root != NULL) {
+        freeTree(root->left);
+        freeTree(root->right);
+        free(root);
+    }
+}
+
+void handleInsertRecord(RecordList* list) {
+    printf("Insert a new expression tree:\n");
+    Node* newTree = buildExpressionTreeInteractive();
+    insertRecord(list, newTree);
+}
+
+void handleRemoveRecord(RecordList* list) {
+    char value[12];
+    printf("Enter the value of the node to remove: ");
+    scanf("%s", value);
+    removeRecord(list, value);
+}
+
+void handleUpdateRecord(RecordList* list) {
+    char oldValue[12], newValue[12];
+    printf("Enter the value of the node to update: ");
+    scanf("%s", oldValue);
+    printf("Enter the new value: ");
+    scanf("%s", newValue);
+
+    Record* current = list->head;
+    while (current != NULL) {
+        updateRecord(current->treeNode, oldValue, newValue);
+        current = current->next;
+    }
+}
+
+void handleSearchRecord(RecordList* list) {
+    char value[12];
+    printf("Enter the value of the node to search: ");
+    scanf("%s", value);
+    Record* result = searchRecord(list, value);
+    if (result != NULL) {
+        printf("Found record with value: %s\n", value);
+    } else {
+        printf("Record with value %s not found.\n", value);
+    }
+}
+
+void handleBuildAndEvaluateExpressionTree(RecordList* list) {
+    double result = 0.0;
+    Record* current = list->head;
+    while (current != NULL) {
+        result += evaluate(current->treeNode);
+        current = current->next;
+    }
+    printf("Result of your expression trees: %.2f\n", result);
+}
+
 int main() {
     RecordList list;
     initList(&list);
@@ -229,7 +340,6 @@ int main() {
     freeRecords(&list);
     return 0;
 }
-
 ```
 3. **Follow the interactive prompts to manage expression trees:**
     - Insert new expression trees
@@ -245,5 +355,3 @@ int main() {
 5. Display records
 6. Build and evaluate expression tree
 7. Exit
-```
-![Image showing the output of the program](/Screenshots)
