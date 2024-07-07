@@ -30,7 +30,7 @@ This project allows users to create and manage expression trees interactively. T
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/expression-tree-management.git
+    [git clone https://github.com/yourusername/expression-tree-management.git](https://github.com/luqmanaaziz1003/EditREADME/blob/main/README.md)
     ```
 2. **Navigate to the project directory:**
     ```sh
