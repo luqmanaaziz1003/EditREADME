@@ -62,7 +62,7 @@ This project allows users to create and manage expression trees interactively. T
 6. Build and evaluate expression tree
 7. Exit
 
-'''
+'''c
 void initList(RecordList* list) {
     list->head = NULL;
 }
